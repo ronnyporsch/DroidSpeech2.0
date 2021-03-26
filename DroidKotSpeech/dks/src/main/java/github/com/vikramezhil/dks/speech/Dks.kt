@@ -32,7 +32,9 @@ class Dks(private val app: Application, private val manager: FragmentManager?, p
 
     override var speechRecognizer: SpeechRecognizer? = SpeechRecognizer.createSpeechRecognizer(app)
 
-    override var speechIntent: Intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+    override var speechIntent: Intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply {
+        putExtra(RecognizerIntent.EXTRA_PREFER_OFFLINE, true)
+    }
 
     override var languageDetailsIntent: Intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
 
